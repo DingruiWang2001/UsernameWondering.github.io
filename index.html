@@ -64,6 +64,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-使用wsl在Windows运行Linux系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/17/%E4%BD%BF%E7%94%A8wsl%E5%9C%A8Windows%E8%BF%90%E8%A1%8CLinux%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2020-02-17T09:49:34.880Z" itemprop="datePublished">2020-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/17/%E4%BD%BF%E7%94%A8wsl%E5%9C%A8Windows%E8%BF%90%E8%A1%8CLinux%E7%B3%BB%E7%BB%9F/">使用wsl在Windows运行Linux系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Linux[ˈlinʊks]此处引用陈学源同志告诉我的一句话:*<u>“Linux is not Unix”</u>*</p>
+</li>
+<li><p><del>使你的Windows10操作系统成为测试版<strong>（需要科学上网）</strong></del> </p>
+<ol>
+<li><del>在右下角的通知栏打开设置</del></li>
+<li><del>点击Windows预览版体验计划并加入</del></li>
+<li><del>点击Windows更新-检查更新</del></li>
+</ol>
+<p><strong>上面的方法似乎并没有直接去微软官网下载易升容易与方便</strong></p>
+</li>
+<li><p>在开始栏（小娜/控制面板）打开<em>“启用或关闭Windows功能”</em> 找到“适用于Windows的Linux子系统”选项并打勾，重启电脑</p>
+</li>
+<li><p>打开Microsoft Store，搜索Linux；建议下载Ubuntu；</p>
+</li>
+<li><p>下载完成后在开始栏找到它，并运行。等待几分钟后输入用户名，<strong>注意用户名的首字母不能大写，否则会报错</strong>；按下enter键以后输入密码，此时密码不可见。</p>
+</li>
+<li><p>以管理员权限运行powershell，键入命令<code>wsl -l</code></p>
+<ol>
+<li>此时如果出现wsl是外部指令，请返回步骤2；</li>
+<li>如果能认wsl但是不认识-l，请返回步骤1；</li>
+<li>如果没有出现你安装的Linux发行版系统，但出现了指令提示，请返回步骤3；</li>
+</ol>
+</li>
+<li><p>然后键入命令<code>wsl --set-version &lt;你安装的Linux发行版&gt; 2</code></p>
+</li>
+<li><p>接着你可以在开始菜单中找到你安装的Linux发行版，运行，它现在已经可以完成独立系统可以完成的大部分操作了。但是它没有GUI，似乎是一个缺点。不过毕竟你已经拥有一个叫做Windows10的图形化操作系统了，还要什么自行车？接下来你可qian以wan尝bu试yao键入<code>rm -rf/*</code>命令。祝您成为一个优秀的Linuxer!</p>
+</li>
+<li><p>return 0;</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/17/%E4%BD%BF%E7%94%A8wsl%E5%9C%A8Windows%E8%BF%90%E8%A1%8CLinux%E7%B3%BB%E7%BB%9F/" data-id="ck6usup7b0000n0c316ml6i1h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-苏州大学计算机科学与技术学院学生科技协会科研部活动策划案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/09/%E8%8B%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%E5%AD%A6%E7%94%9F%E7%A7%91%E6%8A%80%E5%8D%8F%E4%BC%9A%E7%A7%91%E7%A0%94%E9%83%A8%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92%E6%A1%88/" class="article-date">
@@ -119,7 +186,7 @@
 <ul>
 <li>我们是什么学院？（<del>996秃顶学院</del>计算机科学与技术学院）</li>
 <li>我们最重要的伴侣是什么？（计算机！）</li>
-<li><del>穷</del>经<del>得</del>费<del>一</del>有<del>匹</del>限的时候如何获得相对高性能的计算机？（艹它！把它频率艹上去！）</li>
+<li><del>穷得一匹</del>经费有限限的时候如何获得相对高性能的计算机？（艹它！把它频率艹上去！）</li>
 <li>更重要的是什么？（极客精神！）</li>
 </ul>
 </li>
@@ -255,6 +322,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/17/%E4%BD%BF%E7%94%A8wsl%E5%9C%A8Windows%E8%BF%90%E8%A1%8CLinux%E7%B3%BB%E7%BB%9F/">使用wsl在Windows运行Linux系统</a>
+          </li>
         
           <li>
             <a href="/2020/02/09/%E8%8B%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%E5%AD%A6%E7%94%9F%E7%A7%91%E6%8A%80%E5%8D%8F%E4%BC%9A%E7%A7%91%E7%A0%94%E9%83%A8%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92%E6%A1%88/">苏州大学计算机科学与技术学院学生科技协会科研部活动策划案</a>
