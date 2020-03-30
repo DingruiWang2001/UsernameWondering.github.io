@@ -70,6 +70,74 @@
     
     
     
+    <article id="post-解决VSCode使用gcc编译运行程序的乱码问题" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"
+    >解决VSCode使用gcc编译运行程序的乱码问题</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-03-30T08:26:15.894Z" itemprop="datePublished">2020-03-30</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>title: 解决VSCode使用gcc编译程序的乱码问题<br>date: 2020-03-04 20:23:20<br>tags:VSCode<br>    我在前面有一篇幅博客之中介绍了如何配置文件使得VSCode这一款优秀的文本编辑器可以编译运行C\C++程序。然而不可忽视的问题是：使用f5调试程序会使得程序中文出现乱码。因为这个问题，我在遇到需要输出中文的时候我是一直使用的code runner插件。<br>    直到今天，无意中发现了解决问题的方法。<br>    Windows中文版的默认编码方式不是unicode而是GBK。当我们使用gcc编译程序时，gcc是没有那么只能的，终端输出的是同样的值在utf-8之中的字符。这是中文乱码出现的原因。而utf-8是大势所趋，我们所做的应该是将系统的默认编码改为utf-8。做法为：设置-语言-管理语言设置-管理-更改系统区域设置-把使用utf-8的方框勾选。<br>    <img src="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%5C%E6%8D%95%E8%8E%B7.PNG" alt="终于显示中文了"><br>    据我查到的资料，早期有一些程序员会通过获取本机的活动代码页也来判断用户所在地区，比如获得代码页为936，那对应的编码方式就是GBK，而unicode不存在什么地区的判定。</p>
+<p>下表列出了所有支持的代码页及其国家(地区)或者语言：<br>代码页       国家(地区)或语言<br>437          美国<br>708          阿拉伯文(ASMO 708)<br>720          阿拉伯文(DOS)<br>850          多语言(拉丁文 I)<br>852          中欧(DOS) - 斯拉夫语(拉丁文 II)<br>855          西里尔文(俄语)<br>857          土耳其语<br>860          葡萄牙语<br>861          冰岛语<br>862          希伯来文(DOS)<br>863          加拿大 - 法语<br>865          日耳曼语<br>866          俄语 - 西里尔文(DOS)<br>869          现代希腊语<br>874          泰文(Windows)<br>932          日文(Shift-JIS)<br>936          中国 - 简体中文(GB2312)<br>949          韩文<br>950          繁体中文(Big5)<br>1200         Unicode<br>1201         Unicode (Big-Endian)<br>1250         中欧(Windows)<br>1251         西里尔文(Windows)<br>1252         西欧(Windows)<br>1253         希腊文(Windows)<br>1254         土耳其文(Windows)<br>1255         希伯来文(Windows)<br>1256         阿拉伯文(Windows)<br>1257         波罗的海文(Windows)<br>1258         越南文(Windows)<br>20866        西里尔文(KOI8-R)<br>21866        西里尔文(KOI8-U)<br>28592        中欧(ISO)<br>28593        拉丁文 3 (ISO)<br>28594        波罗的海文(ISO)<br>28595        西里尔文(ISO)<br>28596        阿拉伯文(ISO)<br>28597        希腊文(ISO)<br>28598        希伯来文(ISO-Visual)<br>38598        希伯来文(ISO-Logical)<br>50000        用户定义的<br>50001        自动选择<br>50220        日文(JIS)<br>50221        日文(JIS-允许一个字节的片假名)<br>50222        日文(JIS-允许一个字节的片假名 - SO/SI)<br>50225        韩文(ISO)<br>50932        日文(自动选择)<br>50949        韩文(自动选择)<br>51932        日文(EUC)<br>51949        韩文(EUC)<br>52936        简体中文(HZ)<br>65000        Unicode (UTF-7)<br>65001        Unicode (UTF-8)</p>
+<pre><code>最后容我说一句，在这个时代还拒绝使用unicode，那简直就是犯罪。</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-搭建VSCode的C++开发环境" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -213,7 +281,7 @@
 <p>​                    <code>cout&lt;&lt;&quot;HelloWorld&quot;&lt;&lt;endl;</code></p>
 <p>​                    <code>returrn 0;</code></p>
 <p>​            <code>}</code></p>
-<p>​            //Have a nice coding time!</p>
+<p>​            //Have a nice coding time！</p>
 </li>
 </ul>
 

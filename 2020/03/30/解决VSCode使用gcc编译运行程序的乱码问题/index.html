@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    搭建VSCode的C++开发环境 |  Life Oriented Programming.
+    解决VSCode使用gcc编译运行程序的乱码问题 |  Life Oriented Programming.
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -31,7 +31,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-搭建VSCode的C++开发环境" class="article article-type-post" itemscope
+  <article id="post-解决VSCode使用gcc编译运行程序的乱码问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  搭建VSCode的C++开发环境
+  解决VSCode使用gcc编译运行程序的乱码问题
 </h1>
   
 
@@ -48,8 +48,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/22/%E6%90%AD%E5%BB%BAVSCode%E7%9A%84C++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="article-date">
-  <time datetime="2020-02-22T13:35:45.538Z" itemprop="datePublished">2020-02-22</time>
+      <a href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-03-30T08:26:15.894Z" itemprop="datePublished">2020-03-30</time>
 </a>
       
       
@@ -59,7 +59,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.4k字</span>
+            <span class="post-count">709字</span>
         </span>
     </span>
 
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -93,114 +93,9 @@
       
 
       
-      <p><em>VSCode是Microsoft开发的一款文本编辑器，其以轻量美观著称。它的大哥visual studio以功能完善著称，但是庞大的身躯在我们仅仅需要编译较小的文件时显得较为臃肿。VSCode是一款文本编辑器，其本身是不带有编译器的。</em></p>
-<p><strong>注：建议全程挂梯子</strong></p>
-<ul>
-<li><p>Step 1. 下载VSCode。网站如下：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p>
-</li>
-<li><p>Step 2. 安装如下插件：</p>
-<ul>
-<li><p>C/C++</p>
-</li>
-<li><p>Chinese (Simplified) Language Pack for Visual Studio Code</p>
-</li>
-<li><p>Code Runner（可不装，但是可以增加方便性）</p>
-<p><img src="/2020/02/22/%E6%90%AD%E5%BB%BAVSCode%E7%9A%84C++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/chajian1.PNG" alt="这是我安装的插件"></p>
-</li>
-</ul>
-</li>
-<li><p>Step 3. 安装编译器。可以使用久负盛名的编译器MinGW。</p>
-<p>其官网地址为<a href="http://www.mingw.org/" target="_blank" rel="noopener">www.mingw.org/</a></p>
-<p>如果你的电脑安装了chocolatey，也可以使用chocolatey安装。命令如下：<code>choco install mingw -y</code>。</p>
-<p>记住将其添加入环境变量。</p>
-<p>请选择它的默认安装路径（C:\MinGW）以便于以后的管理以及问题排查。</p>
-</li>
-<li><p>Step 4. 配置文件。</p>
-<p>在你的workspace创建一个文件夹，以后这个文件夹就是你使用VSCode工作的地方。我们不妨假设这个文件夹的名称为VSCode-C++。在这个问价夹内创建一个文件夹.vscode。Windows可能会阻止这个行为，因为.后面跟的往往是后缀名。如果失败你可以使用如下Python脚本创建该文件夹：</p>
-<p><code>import os</code></p>
-<p><code>os.mkdir(&quot;c:/workspace/VSCode-C++/.vscode&quot;)</code></p>
-<p>其中路径你可以自行决定。</p>
-<p>然后打开.vscode文件夹，创建三个文件：launch.json;  tasks.json;  settings.json;将如下内容分别粘贴在三个文件中。网络上的内容大都不可以直接使用，如果你将MinGW安装在其默认文件夹（C:\MinGW），以下内容可直接全部复制粘贴。以下内容与注释为本人整合的他人智慧结晶。</p>
-<ul>
-<li><p>launch.json</p>
-<p><code>{</code> </p>
-<p>  <code>&quot;version&quot;: &quot;0.2.0&quot;,</code> </p>
-<p>  <code>&quot;configurations&quot;: [</code> </p>
-<p>​    <code>{</code> </p>
-<p>​      <code>&quot;name&quot;: &quot;(gdb) Launch&quot;, // 配置名称，将会在启动配置的下拉菜单中显示</code> </p>
-<p>​      <code>&quot;type&quot;: &quot;cppdbg&quot;,    // 配置类型，这里只能为cppdbg</code> </p>
-<p>​      <code>&quot;request&quot;: &quot;launch&quot;,  // 请求配置类型，可以为launch（启动）或attach（附加）</code> </p>
-<p>​      <code>&quot;program&quot;: &quot;${workspaceFolder}/${fileBasenameNoExtension}.exe&quot;,// 将要进行调试的程序的路径</code> </p>
-<p>​      <code>&quot;args&quot;: [],       // 程序调试时传递给程序的命令行参数，一般设为空即可</code> </p>
-<p>​      <code>&quot;stopAtEntry&quot;: false,  // 设为true时程序将暂停在程序入口处，一般设置为false</code> </p>
-<p>​      <code>&quot;cwd&quot;: &quot;${workspaceFolder}&quot;, // 调试程序时的工作目录，一般为${workspaceFolder}即代码所在目录</code> </p>
-<p>​      <code>&quot;environment&quot;: [],</code> </p>
-<p>​      <code>&quot;externalConsole&quot;: true, // 调试时是否显示控制台窗口，一般设置为true显示控制台</code> </p>
-<p>​      <code>&quot;MIMode&quot;: &quot;gdb&quot;,</code> </p>
-<p>​      <code>&quot;miDebuggerPath&quot;: &quot;C:\\MinGW\\bin\\gdb.exe&quot;, // miDebugger的路径，注意这里要与MinGw的路径对应</code> </p>
-<p>​      <code>&quot;preLaunchTask&quot;: &quot;g++&quot;, // 调试会话开始前执行的任务，一般为编译程序，c++为g++, c为gcc</code> </p>
-<p>​      <code>&quot;setupCommands&quot;: [</code> </p>
-<p>​        <code>{</code>  </p>
-<p>​      <code>&quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</code> </p>
-<p>​          <code>&quot;text&quot;: &quot;-enable-pretty-printing&quot;,</code> </p>
-<p>​          <code>&quot;ignoreFailures&quot;: true</code> </p>
-<p>​        <code>}</code> </p>
-<p>​      <code>]</code> </p>
-<p>​    <code>}</code> </p>
-<p>  <code>]</code> </p>
-<p><code>}</code></p>
-</li>
-<li><p>tasks.json</p>
-<p><code>{</code></p>
-<p>  <code>&quot;version&quot;: &quot;2.0.0&quot;,</code></p>
-<p>  <code>&quot;command&quot;: &quot;g++&quot;,</code></p>
-<p>  <code>&quot;args&quot;: [&quot;-g&quot;,&quot;${file}&quot;,&quot;-o&quot;,&quot;${fileBasenameNoExtension}.exe&quot;],  // 编译命令参数</code></p>
-<p>  <code>&quot;problemMatcher&quot;: {</code></p>
-<p>​    <code>&quot;owner&quot;: &quot;cpp&quot;,</code></p>
-<p>​    <code>&quot;fileLocation&quot;: [&quot;relative&quot;, &quot;${workspaceFolder}&quot;],</code></p>
-<p>​    <code>&quot;pattern&quot;: {</code></p>
-<p>​      <code>&quot;regexp&quot;: &quot;^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$&quot;,</code></p>
-<p>​      <code>&quot;file&quot;: 1,</code></p>
-<p>​      <code>&quot;line&quot;: 2,</code></p>
-<p>​      <code>&quot;column&quot;: 3,</code></p>
-<p>​      <code>&quot;severity&quot;: 4,</code></p>
-<p>​      <code>&quot;message&quot;: 5</code></p>
-<p>​    <code>}</code></p>
-<p>  <code>}</code></p>
-<p><code>}</code></p>
-</li>
-<li><p>settings.json</p>
-<p><code>{ &quot;files.defaultLanguage&quot;: &quot;c++&quot;, // ctrl+N新建文件后默认的语言</code> </p>
-<p>  <code>&quot;editor.formatOnType&quot;: true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码</code> </p>
-<p>  <code>&quot;editor.suggest.snippetsPreventQuickSuggestions&quot;: false, // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了</code> </p>
-<p>  <code>&quot;editor.acceptSuggestionOnEnter&quot;: &quot;on&quot;, // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense //</code> </p>
-<p>  <code>&quot;editor.snippetSuggestions&quot;: &quot;top&quot;, // （可选）snippets显示在补全列表顶端，默认是inline</code> </p>
-<p>  <code>&quot;code-runner.runInTerminal&quot;: true, // 设置成false会在“输出”中输出，无法输入</code> </p>
-<p>  <code>&quot;code-runner.executorMap&quot;: { &quot;c&quot;: &quot;cd $dir &amp;&amp; gcc &#39;$fileName&#39; -o &#39;$fileNameWithoutExt.exe&#39; -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK &amp;&amp; &amp;&#39;$dir$fileNameWithoutExt&#39;&quot;,</code> </p>
-<p>​    <code>&quot;cpp&quot;: &quot;cd $dir &amp;&amp; g++ &#39;$fileName&#39; -o &#39;$fileNameWithoutExt.exe&#39; -Wall -g -O2 -static-libgcc -std=c++17 -fexec-charset=GBK &amp;&amp; &amp;&#39;$dir$fileNameWithoutExt&#39;&quot;</code> </p>
-<p>​    <code>// &quot;c&quot;: &quot;cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK &amp;&amp; $dir$fileNameWithoutExt&quot;,</code> </p>
-<p>​    <code>// &quot;cpp&quot;: &quot;cd $dir &amp;&amp; g++ $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc -std=c++17 -fexec-charset=GBK &amp;&amp; $dir$fileNameWithoutExt&quot;</code> </p>
-<p>​    <code>}, // 右键run code时运行的命令；未注释的仅适用于PowerShell（Win10默认），文件名中有空格也可以编译运行；注释掉的适用于cmd（win7默认），PS和bash也能用，但文件名中有空格时无法运行</code> </p>
-<p>​    <code>&quot;code-runner.saveFileBeforeRun&quot;: true, // run code前保存</code> </p>
-<p>​    <code>&quot;code-runner.preserveFocus&quot;: true, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false</code> </p>
-<p>​    <code>&quot;code-runner.clearPreviousOutput&quot;: false, // 每次run code前清空属于code runner的终端消息，默认false</code> </p>
-<p>​    <code>&quot;code-runner.ignoreSelection&quot;: true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用</code> </p>
-<p>​    <code>&quot;C_Cpp.clang_format_sortIncludes&quot;: true, // 格式化时调整include的顺序（按字母排序）</code> </p>
-<p>  <code>}</code></p>
-</li>
-</ul>
-</li>
-<li><p>Step 5.<code>#include &lt;iostream&gt;</code></p>
-<p>​            <code>using namespace std;</code></p>
-<p>​            <code>int main()</code></p>
-<p>​            <code>{</code></p>
-<p>​                    <code>cout&lt;&lt;&quot;HelloWorld&quot;&lt;&lt;endl;</code></p>
-<p>​                    <code>returrn 0;</code></p>
-<p>​            <code>}</code></p>
-<p>​            //Have a nice coding time！</p>
-</li>
-</ul>
-
+      <p>title: 解决VSCode使用gcc编译程序的乱码问题<br>date: 2020-03-04 20:23:20<br>tags:VSCode<br>    我在前面有一篇幅博客之中介绍了如何配置文件使得VSCode这一款优秀的文本编辑器可以编译运行C\C++程序。然而不可忽视的问题是：使用f5调试程序会使得程序中文出现乱码。因为这个问题，我在遇到需要输出中文的时候我是一直使用的code runner插件。<br>    直到今天，无意中发现了解决问题的方法。<br>    Windows中文版的默认编码方式不是unicode而是GBK。当我们使用gcc编译程序时，gcc是没有那么只能的，终端输出的是同样的值在utf-8之中的字符。这是中文乱码出现的原因。而utf-8是大势所趋，我们所做的应该是将系统的默认编码改为utf-8。做法为：设置-语言-管理语言设置-管理-更改系统区域设置-把使用utf-8的方框勾选。<br>    <img src="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%5C%E6%8D%95%E8%8E%B7.PNG" alt="终于显示中文了"><br>    据我查到的资料，早期有一些程序员会通过获取本机的活动代码页也来判断用户所在地区，比如获得代码页为936，那对应的编码方式就是GBK，而unicode不存在什么地区的判定。</p>
+<p>下表列出了所有支持的代码页及其国家(地区)或者语言：<br>代码页       国家(地区)或语言<br>437          美国<br>708          阿拉伯文(ASMO 708)<br>720          阿拉伯文(DOS)<br>850          多语言(拉丁文 I)<br>852          中欧(DOS) - 斯拉夫语(拉丁文 II)<br>855          西里尔文(俄语)<br>857          土耳其语<br>860          葡萄牙语<br>861          冰岛语<br>862          希伯来文(DOS)<br>863          加拿大 - 法语<br>865          日耳曼语<br>866          俄语 - 西里尔文(DOS)<br>869          现代希腊语<br>874          泰文(Windows)<br>932          日文(Shift-JIS)<br>936          中国 - 简体中文(GB2312)<br>949          韩文<br>950          繁体中文(Big5)<br>1200         Unicode<br>1201         Unicode (Big-Endian)<br>1250         中欧(Windows)<br>1251         西里尔文(Windows)<br>1252         西欧(Windows)<br>1253         希腊文(Windows)<br>1254         土耳其文(Windows)<br>1255         希伯来文(Windows)<br>1256         阿拉伯文(Windows)<br>1257         波罗的海文(Windows)<br>1258         越南文(Windows)<br>20866        西里尔文(KOI8-R)<br>21866        西里尔文(KOI8-U)<br>28592        中欧(ISO)<br>28593        拉丁文 3 (ISO)<br>28594        波罗的海文(ISO)<br>28595        西里尔文(ISO)<br>28596        阿拉伯文(ISO)<br>28597        希腊文(ISO)<br>28598        希伯来文(ISO-Visual)<br>38598        希伯来文(ISO-Logical)<br>50000        用户定义的<br>50001        自动选择<br>50220        日文(JIS)<br>50221        日文(JIS-允许一个字节的片假名)<br>50222        日文(JIS-允许一个字节的片假名 - SO/SI)<br>50225        韩文(ISO)<br>50932        日文(自动选择)<br>50949        韩文(自动选择)<br>51932        日文(EUC)<br>51949        韩文(EUC)<br>52936        简体中文(HZ)<br>65000        Unicode (UTF-7)<br>65001        Unicode (UTF-8)</p>
+<pre><code>最后容我说一句，在这个时代还拒绝使用unicode，那简直就是犯罪。</code></pre>
       
       <!-- reward -->
       
@@ -265,7 +160,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/22/%E6%90%AD%E5%BB%BAVSCode%E7%9A%84C++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,19 +176,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            解决VSCode使用gcc编译运行程序的乱码问题
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/17/%E4%BD%BF%E7%94%A8wsl2%E5%9C%A8Windows%E8%BF%90%E8%A1%8CLinux%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+      <a href="/2020/02/22/%E6%90%AD%E5%BB%BAVSCode%E7%9A%84C++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">使用wsl2在Windows运行Linux系统</div>
+        <div class="article-nav-title">搭建VSCode的C++开发环境</div>
       </a>
     
   </nav>
