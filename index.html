@@ -70,6 +70,100 @@
     
     
     
+    <article id="post-如何配置Windows-terminal以优雅地使用Git-Bash" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/"
+    >如何配置Windows terminal以优雅地使用Git Bash</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/" class="article-date">
+  <time datetime="2020-03-31T09:38:42.000Z" itemprop="datePublished">2020-03-31</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="看看这个颜值，又有谁不爱？"><a href="#看看这个颜值，又有谁不爱？" class="headerlink" title="看看这个颜值，又有谁不爱？"></a>看看这个颜值，又有谁不爱？</h1><ul>
+<li><p>Step 1 在Microsoft Store下载Terminal应用。安装完成后打开此应用则默认可以使用Windows Poweshell、 cmd、 你安装的wsl子系统； 但是默认是没有Git Bash的。 </p>
+</li>
+<li><p>Step 2 </p>
+<p><img src="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash%5C1.png" alt="点击"></p>
+<p>点击如图所示的Settings，进入配置文件编辑页面。</p>
+<p>在如图所示的位置插入如下描述。注意！不能忘记在上一个代码块后面加上半角逗号，否则会报错。</p>
+<p><img src="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash%5C2.png" alt="注意上一段花括号末尾要加一个半角逗号！"></p>
+<pre><code> {
+  &quot;acrylicOpacity&quot;: 0.5, // 透明度
+  &quot;closeOnExit&quot;: true, // 关闭的时候退出命令终端
+  &quot;commandline&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;, // gitbash的命令行所在位置
+  &quot;cursorColor&quot;: &quot;#FFFFFF&quot;, // 光标颜色
+  &quot;cursorShape&quot;: &quot;bar&quot;, // 这个，还没发现啥作用
+  &quot;fontSize&quot;: 14, // 终端字体大小
+  &quot;guid&quot;: &quot;{1c4de342-38b7-51cf-b940-2309a097f589}&quot;, // 唯一的标识，这个记得改成和其他的终端不一样就行了，随便起一个
+  &quot;historySize&quot;: 9001, // emmm
+  &quot;icon&quot;: &quot;C:\\Program Files\\Git\\git-icon.png&quot;, // git的图标，打开终端时候会看到
+  &quot;name&quot;: &quot;Git Bash&quot;, // tab栏的标题显示
+  &quot;padding&quot;: &quot;10, 10, 10, 10&quot;, // 边距
+  &quot;snapOnInput&quot;: true, // emmm
+  &quot;startingDirectory&quot;: &quot;C:\\Users\\10536&quot;, // gitbash 启动的位置（默认在C盘的用户里面的就是 ~ ）
+  &quot;useAcrylic&quot;: true // 是否开启透明度
+}</code></pre></li>
+<li><p>Step 3</p>
+<p>保存文件，甚至不用重启Terminal，你就可以使用颜值这样高的终端了。</p>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-解决VSCode使用gcc编译运行程序的乱码问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 

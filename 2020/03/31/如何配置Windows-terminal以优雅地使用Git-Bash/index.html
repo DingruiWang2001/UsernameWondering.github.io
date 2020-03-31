@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    解决VSCode使用gcc编译运行程序的乱码问题 |  Life Oriented Programming.
+    如何配置Windows terminal以优雅地使用Git Bash |  Life Oriented Programming.
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -31,7 +31,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-解决VSCode使用gcc编译运行程序的乱码问题" class="article article-type-post" itemscope
+  <article id="post-如何配置Windows-terminal以优雅地使用Git-Bash" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  解决VSCode使用gcc编译运行程序的乱码问题
+  如何配置Windows terminal以优雅地使用Git Bash
 </h1>
   
 
@@ -48,8 +48,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-03-30T08:26:15.894Z" itemprop="datePublished">2020-03-30</time>
+      <a href="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/" class="article-date">
+  <time datetime="2020-03-31T09:38:42.000Z" itemprop="datePublished">2020-03-31</time>
 </a>
       
       
@@ -59,7 +59,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">709字</span>
+            <span class="post-count">361字</span>
         </span>
     </span>
 
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -79,6 +79,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -93,9 +95,35 @@
       
 
       
-      <p>title: 解决VSCode使用gcc编译程序的乱码问题<br>date: 2020-03-04 20:23:20<br>tags:VSCode<br>    我在前面有一篇幅博客之中介绍了如何配置文件使得VSCode这一款优秀的文本编辑器可以编译运行C\C++程序。然而不可忽视的问题是：使用f5调试程序会使得程序中文出现乱码。因为这个问题，我在遇到需要输出中文的时候我是一直使用的code runner插件。<br>    直到今天，无意中发现了解决问题的方法。<br>    Windows中文版的默认编码方式不是unicode而是GBK。当我们使用gcc编译程序时，gcc是没有那么只能的，终端输出的是同样的值在utf-8之中的字符。这是中文乱码出现的原因。而utf-8是大势所趋，我们所做的应该是将系统的默认编码改为utf-8。做法为：设置-语言-管理语言设置-管理-更改系统区域设置-把使用utf-8的方框勾选。<br>    <img src="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%5C%E6%8D%95%E8%8E%B7.PNG" alt="终于显示中文了"><br>    据我查到的资料，早期有一些程序员会通过获取本机的活动代码页也来判断用户所在地区，比如获得代码页为936，那对应的编码方式就是GBK，而unicode不存在什么地区的判定。</p>
-<p>下表列出了所有支持的代码页及其国家(地区)或者语言：<br>代码页       国家(地区)或语言<br>437          美国<br>708          阿拉伯文(ASMO 708)<br>720          阿拉伯文(DOS)<br>850          多语言(拉丁文 I)<br>852          中欧(DOS) - 斯拉夫语(拉丁文 II)<br>855          西里尔文(俄语)<br>857          土耳其语<br>860          葡萄牙语<br>861          冰岛语<br>862          希伯来文(DOS)<br>863          加拿大 - 法语<br>865          日耳曼语<br>866          俄语 - 西里尔文(DOS)<br>869          现代希腊语<br>874          泰文(Windows)<br>932          日文(Shift-JIS)<br>936          中国 - 简体中文(GB2312)<br>949          韩文<br>950          繁体中文(Big5)<br>1200         Unicode<br>1201         Unicode (Big-Endian)<br>1250         中欧(Windows)<br>1251         西里尔文(Windows)<br>1252         西欧(Windows)<br>1253         希腊文(Windows)<br>1254         土耳其文(Windows)<br>1255         希伯来文(Windows)<br>1256         阿拉伯文(Windows)<br>1257         波罗的海文(Windows)<br>1258         越南文(Windows)<br>20866        西里尔文(KOI8-R)<br>21866        西里尔文(KOI8-U)<br>28592        中欧(ISO)<br>28593        拉丁文 3 (ISO)<br>28594        波罗的海文(ISO)<br>28595        西里尔文(ISO)<br>28596        阿拉伯文(ISO)<br>28597        希腊文(ISO)<br>28598        希伯来文(ISO-Visual)<br>38598        希伯来文(ISO-Logical)<br>50000        用户定义的<br>50001        自动选择<br>50220        日文(JIS)<br>50221        日文(JIS-允许一个字节的片假名)<br>50222        日文(JIS-允许一个字节的片假名 - SO/SI)<br>50225        韩文(ISO)<br>50932        日文(自动选择)<br>50949        韩文(自动选择)<br>51932        日文(EUC)<br>51949        韩文(EUC)<br>52936        简体中文(HZ)<br>65000        Unicode (UTF-7)<br>65001        Unicode (UTF-8)</p>
-<pre><code>最后容我说一句，在这个时代还拒绝使用unicode，那简直就是犯罪。</code></pre>
+      <h1 id="看看这个颜值，又有谁不爱？"><a href="#看看这个颜值，又有谁不爱？" class="headerlink" title="看看这个颜值，又有谁不爱？"></a>看看这个颜值，又有谁不爱？</h1><ul>
+<li><p>Step 1 在Microsoft Store下载Terminal应用。安装完成后打开此应用则默认可以使用Windows Poweshell、 cmd、 你安装的wsl子系统； 但是默认是没有Git Bash的。 </p>
+</li>
+<li><p>Step 2 </p>
+<p><img src="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash%5C1.png" alt="点击"></p>
+<p>点击如图所示的Settings，进入配置文件编辑页面。</p>
+<p>在如图所示的位置插入如下描述。注意！不能忘记在上一个代码块后面加上半角逗号，否则会报错。</p>
+<p><img src="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/C:%5CUsers%5C10536%5Cmyblog%5Csource_posts%5C%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash%5C2.png" alt="注意上一段花括号末尾要加一个半角逗号！"></p>
+<pre><code> {
+  &quot;acrylicOpacity&quot;: 0.5, // 透明度
+  &quot;closeOnExit&quot;: true, // 关闭的时候退出命令终端
+  &quot;commandline&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;, // gitbash的命令行所在位置
+  &quot;cursorColor&quot;: &quot;#FFFFFF&quot;, // 光标颜色
+  &quot;cursorShape&quot;: &quot;bar&quot;, // 这个，还没发现啥作用
+  &quot;fontSize&quot;: 14, // 终端字体大小
+  &quot;guid&quot;: &quot;{1c4de342-38b7-51cf-b940-2309a097f589}&quot;, // 唯一的标识，这个记得改成和其他的终端不一样就行了，随便起一个
+  &quot;historySize&quot;: 9001, // emmm
+  &quot;icon&quot;: &quot;C:\\Program Files\\Git\\git-icon.png&quot;, // git的图标，打开终端时候会看到
+  &quot;name&quot;: &quot;Git Bash&quot;, // tab栏的标题显示
+  &quot;padding&quot;: &quot;10, 10, 10, 10&quot;, // 边距
+  &quot;snapOnInput&quot;: true, // emmm
+  &quot;startingDirectory&quot;: &quot;C:\\Users\\10536&quot;, // gitbash 启动的位置（默认在C盘的用户里面的就是 ~ ）
+  &quot;useAcrylic&quot;: true // 是否开启透明度
+}</code></pre></li>
+<li><p>Step 3</p>
+<p>保存文件，甚至不用重启Terminal，你就可以使用颜值这样高的终端了。</p>
+</li>
+</ul>
+
       
       <!-- reward -->
       
@@ -160,7 +188,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -176,19 +204,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/31/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEWindows-terminal%E4%BB%A5%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Git-Bash/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            如何配置Windows terminal以优雅地使用Git Bash
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/22/%E6%90%AD%E5%BB%BAVSCode%E7%9A%84C++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="article-nav-link">
+      <a href="/2020/03/30/%E8%A7%A3%E5%86%B3VSCode%E4%BD%BF%E7%94%A8gcc%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">搭建VSCode的C++开发环境</div>
+        <div class="article-nav-title">解决VSCode使用gcc编译运行程序的乱码问题</div>
       </a>
     
   </nav>
